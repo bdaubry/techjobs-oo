@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import sun.text.resources.ar.FormatData_ar_LB;
 
 import javax.validation.Valid;
 
@@ -46,7 +45,6 @@ public class JobController {
         // redirect to the job detail view for the new Job.
 
         if (errors.hasErrors()) {
-            model.addAttribute(new JobForm());
             return "new-job";
         }
 
@@ -60,9 +58,7 @@ public class JobController {
 
         jobData.add(newJob);
 
-        model.addAttribute("id", newJob.getId());
-
-        return "";
+        return "redirect:/job?id=" + newJob.getId();
 
     }
 }
